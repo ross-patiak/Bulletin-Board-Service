@@ -1,0 +1,23 @@
+syntax = "proto3";
+package com.bulletinboard;
+option java_multiple_files = true;
+
+// Implement ProtoFile Here
+
+message Post {
+	string title = 1;
+	string body = 2;
+}
+
+message PostList {
+	repeated Post posts = 1;
+}
+
+message Void {}
+
+service BoardTasks {
+	rpc PostMessage(Post) returns (PostList);
+	rpc GetPost(Post) returns (Post);
+	rpc ListPosts(Void) returns (PostList);
+	rpc DeletePost(Post) returns (PostList);
+}
